@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+            background-color: #f1f2f4; /* Lighter gray background color */
+            border-collapse: collapse;
+            border: 2px solid #b7b8ba; /* Lighter gray border color */
+            border-radius: 10px;
+        }
+        table td {
+            padding: 10px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 24px;
+            border: none;
+            text-align: right;
+            background-color: #ecf0f1;
+        }
+        input[type="button"] {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            background-color: #f39c12; /* Light orange button background color */
+            border: 1px solid #d35400; /* Lighter orange button border color */
+            cursor: pointer;
+            color: #fff;
+        }
+        input[type="button"]:hover {
+            background-color: #e67e22; /* Darker orange on hover */
+        }
+        input[type="button"]:active {
+            background-color: #d35400; /* Even darker orange on click */
+        }
+    </style>
+</head>
+<body>
+    <form name="form1">
+        <table border="2">
+            <tr>
+                <td colspan="3"><input type="text" name="answer" id="answer"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" onclick="appendToAnswer('1')"></td>
+                <td><input type="button" value="2" onclick="appendToAnswer('2')"></td>
+                <td><input type="button" value="3" onclick="appendToAnswer('3')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" onclick="appendToAnswer('4')"></td>
+                <td><input type="button" value="5" onclick="appendToAnswer('5')"></td>
+                <td><input type="button" value="6" onclick="appendToAnswer('6')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" onclick="appendToAnswer('7')"></td>
+                <td><input type="button" value="8" onclick="appendToAnswer('8')"></td>
+                <td><input type="button" value="9" onclick="appendToAnswer('9')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="0" onclick="appendToAnswer('0')"></td>
+                <td><input type="button" value="+" onclick="appendToAnswer('+')"></td>
+                <td><input type="button" value="-" onclick="appendToAnswer('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="*" onclick="appendToAnswer('*')"></td>
+                <td><input type="button" value="/" onclick="appendToAnswer('/')"></td>
+                <td><input type="button" value="C" onclick="clearAnswer()"></td>
+            </tr>
+            <tr>
+                <td colspan="3"><input type="button" value="=" onclick="calculateResult()"></td>
+            </tr>
+        </table>
+    </form>
+
+    <script>
+        function appendToAnswer(value) {
+            document.getElementById('answer').value += value;
+        }
+
+        function clearAnswer() {
+            document.getElementById('answer').value = '';
+        }
+
+        function calculateResult() {
+            try {
+                const result = eval(document.getElementById('answer').value);
+                document.getElementById('answer').value = result;
+            } catch (error) {
+                document.getElementById('answer').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
